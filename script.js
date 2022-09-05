@@ -1,9 +1,8 @@
 
-    let userScore = 0
-    let computerScore = 0
+let userScore = 0
+let computerScore = 0
 
-function playRound () { /*x is user and y is computer*/
-    let userChoice=prompt('Do you choose Rock, Paper, or Scissor?').toLowerCase()
+function playRound (userChoice) { /*x is user and y is computer*/
     let computerChoice = Math.random()
     if (computerChoice <0.34) {
         computerChoice='rock';
@@ -15,52 +14,64 @@ function playRound () { /*x is user and y is computer*/
             computerChoice='scissors'
         }
     if (userChoice==computerChoice) {
-        return 'The result is a tie!';
     }
     else if (userChoice=='rock') {
         if (computerChoice=='scissors') {
             userScore++;   /*same as userScore += 1 or userScore = userScore +1? */
-            console.log('User' + userScore)
-            return 'You Win';
         }
         else {
             computerScore++;
-            console.log('Comp' + computerScore)
-            return 'You Lose';
         }
     }
     else if (userChoice=='paper') {
         if (computerChoice=='scissors') {
             computerScore++;
-            console.log('Com' + computerScore)
-            return 'You Lose';
         }
         else {
             userScore++;
-            console.log('User' + userScore)
-            return 'You Win';
         }
     }
     else if (userChoice=='scissors') {
         if (computerChoice=='paper') {
             userScore++;
-            console.log('User' + userScore)
-            return 'You Win';
         }
         else {
             computerScore++;
-            console.log('Comp' + computerScore)
-            return 'You Lose';
         }
     }
+    div.textContent = `Player Score: ${userScore}`;
+    if (userScore == 5) {
+        alert('You win!')
+    }
+    else if (computerScore == 5) {
+        alert('You lose!')
+    }
 }
-//console.log(computerChoice)
-//console.log(playRound (computerChoice))
+
+const rckbutton = document.querySelector('#rockbtn');
+const pperbutton = document.querySelector('#paperbtn');
+const scrbutton = document.querySelector('#scissorbtn');
+
+rckbutton.addEventListener('click', () => {
+    playRound('rock')
+})
+
+pperbutton.addEventListener('click', () => {
+    playRound('paper')
+})
+
+scrbutton.addEventListener('click', () => {
+    playRound('scissors')
+})
+
+const container = document.querySelector ('#container');
+const div = document.createElement('div');
+container.appendChild(div);
 
 
-// r is userScore and t is computerScore
-// do I need to add userChoice and computerChoice in parameters?
+/*
 function game () {
+    i = 0
     for (let i = 1; i <= 5; i++) {
         playRound()
     }
@@ -79,6 +90,7 @@ function game () {
         console.log(computerScore);
         return 'You are a loser!'
     }
+<<<<<<< HEAD
 }
 
 /* game ()
@@ -89,3 +101,6 @@ consoler.log (computerScore)
 
 //always saying tie and also I get all the points for rock
 // add option if person enters nothing
+=======
+ */
+>>>>>>> rps-ui
